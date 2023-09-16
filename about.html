@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
-    <title>The Job</title>
+    <title>The JOB</title>
 
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 
@@ -50,8 +50,38 @@
                           <li><a href="about.html">About</a></li>
                           <li><a href="jobs.html">Make Appointment</a></li>
                           <li><a href="contact.html">Contact</a></li> 
-                          <li><a href="userLogin.html">Logout</a></li> 
-                        </ul>        
+                          <li><a href="userLogin.html" id="logoutButton">Logout</a></li> 
+                        </ul> 
+                        
+                        <script>
+                          // JavaScript code to handle the logout button click
+                             document.addEventListener("DOMContentLoaded", function () {
+                               // Find the logout button by its ID
+                               const logoutButton = document.getElementById("logoutButton");
+
+                                // Add a click event listener to the logout button
+                                if (logoutButton) {
+                                              logoutButton.addEventListener("click", function () {
+                                                // Clear the session storage
+                                                sessionStorage.clear();
+
+                                                // Replace the current URL with the logout URL
+                                                const logoutURL = "userLogin.html";
+                                                window.history.replaceState(null, "", logoutURL);
+
+                                                // Redirect to the logout URL
+                                                window.location.href = logoutURL;
+                                              });
+                                            }
+                                });
+
+                                // Disable back and forward navigation
+                                window.addEventListener("popstate", function (event) {
+                              // Restore the current URL and prevent navigation
+                               window.history.pushState(null, "", window.location.href);
+                            });
+                       </script>   
+                       
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
@@ -98,30 +128,18 @@
                     <img src="assets/images/about-image-1-940x460.jpg" alt="">
                     <h4>Our Goals</h4>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel aspernatur natus dignissimos eos quod, odio.</p>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad cupiditate ullam exercitationem molestiae illum? Nam magni, saepe sint maiores vitae!</p>
-
-                    <p>Phasellus convallis mauris sed elementum vulputate. Donec posuere leo sed dui eleifend hendrerit. Sed suscipit suscipit erat, sed vehicula ligula. Aliquam ut sem fermentum sem tincidunt lacinia gravida aliquam nunc. Morbi quis erat imperdiet, molestie nunc ut, accumsan diam.</p>
-                   
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi suscipit commodi impedit unde accusantium nam incidunt tenetur, libero maiores enim! Nisi ex odit, totam nihil doloribus. Nemo ut, eos consequatur libero aut quas dolorum ipsa, quidem, totam dicta id possimus dolores distinctio laboriosam doloribus voluptates tenetur consectetur inventore aliquid dolorem?</p>
+                    <p>At The Jobs, our primary goal is to empower job seekers in Colombo and beyond by providing them with invaluable guidance and consultation services. We aim to be the guiding light for those aspiring to work abroad, helping them navigate the complexities of international job markets with confidence. Our dedicated team of part-time job consultants is committed to understanding your unique aspirations and providing tailored advice for various countries and job types. We strive to equip job seekers with the knowledge and insights they need to make informed decisions about their career journeys abroad. Your success is our ultimate goal, and we are here to support you every step of the way.</p>
+          
                   </article>
                   <article id='tabs-2'>
                     <img src="assets/images/about-image-2-940x460.jpg" alt="">
                     <h4>Our Work</h4>
-                    <p>Integer dapibus, est vel dapibus mattis, sem mauris luctus leo, ac pulvinar quam tortor a velit. Praesent ultrices erat ante, in ultricies augue ultricies faucibus. Nam tellus nibh, ullamcorper at mattis non, rhoncus sed massa. Cras quis pulvinar eros. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque ut accusantium cum! Ad quisquam, aut praesentium magni pariatur ipsa! Soluta deserunt accusantium repellendus ratione quam hic facere, cupiditate iste obcaecati a, officiis ipsum aspernatur in?</p>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla a necessitatibus eos vitae quibusdam quo sunt officiis rerum voluptatibus non natus eius placeat officia vel quaerat, reprehenderit obcaecati, eaque? Repudiandae ad facere culpa accusamus aliquam ab assumenda reiciendis corrupti cum nemo, cumque molestiae corporis deserunt!</p>
+                    <p>Our work at The Jobs revolves around offering free consultation services to job seekers who are considering opportunities abroad. We take pride in our team of specialized job consultants, each of whom brings expertise in specific countries and job sectors. Through one-on-one appointments, we engage with our clients to understand their career objectives, providing them with personalized advice and strategies to enhance their chances of success. We facilitate informed decision-making by sharing up-to-date information on employment trends, visa requirements, and cultural nuances. Our commitment to excellence drives us to continually refine our services and adapt to the evolving needs of our clients.</p>
                   </article>
                   <article id='tabs-3'>
                     <img src="assets/images/about-image-3-940x460.jpg" alt="">
                     <h4>Our Passion</h4>
-                    <p>Fusce laoreet malesuada rhoncus. Donec ultricies diam tortor, id auctor neque posuere sit amet. Aliquam pharetra, augue vel cursus porta, nisi tortor vulputate sapien, id scelerisque felis magna id felis. Proin neque metus, pellentesque pharetra semper vel, accumsan a neque.</p>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro aut beatae commodi repudiandae distinctio, magnam blanditiis reiciendis vitae velit voluptatum natus, fugit quis eos dolores!</p>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic adipisci reiciendis quaerat qui earum aut, atque esse quisquam quis exercitationem sapiente, dolorum consequatur consequuntur voluptatibus ipsam, fuga magnam beatae optio nam. Recusandae ut aliquid, eligendi.</p>
+                    <p>Passion is at the heart of everything we do at The Jobs. We are genuinely passionate about helping individuals achieve their dreams and unlock their potential on the global stage. Our consultants are driven by a shared enthusiasm for international employment opportunities, and we believe that everyone deserves a chance to explore the world through meaningful work experiences. Our dedication to this cause fuels our energy and inspires us to go above and beyond in assisting job seekers. We derive immense satisfaction from witnessing the success stories of our clients, knowing that our passion has played a part in their journey toward a brighter future.</p>
                   </article>
                 </section>
               </div>

@@ -1,75 +1,4 @@
 viewConsultant();
-// function saveConsultant(){
-
-//         let consultantName=$('#exampleFormControlInput2').val();
-//         let email=$('#exampleFormControlInput3').val();
-//         let password=$('#exampleFormControlInput4').val();
-//         let consultantNumber=$('#exampleFormControlInput5').val();
-//         let specializedCountry=$('#exampleFormControlInput6').val();
-//         let availableDay=$('#exampleFormControlInput7').val();
-//         let timeSlot=$('#exampleFormControlInput8').val();
-
-//         $.ajax({
-//             method:"POST",
-//             contentType:"application/json",
-//             url:"http://localhost:8086/consultant/save",
-//             async:true,
-//             data:JSON.stringify({
-//                 "id":"",
-//                 "consultantName":consultantName,
-//                 "email":email,
-//                 "password":password,
-//                 "consultantNumber":consultantNumber,
-//                 "specializedCountry":specializedCountry,
-//                 "availableDay":availableDay,
-//                 "timeSlot":timeSlot
-
-//             }),
-//             success: function (data) {
-//                 alert("saved")
-//             },
-//             error: function (xhr, exception) {
-//                 alert("Error")
-//             }
-//         })
-
-//     }
-
-// function saveConsultant(){
-
-//     let consultantName=$('#exampleFormControlInput2').val();
-//     let email=$('#exampleFormControlInput3').val();
-//     let password=$('#exampleFormControlInput4').val();
-//     let consultantNumber=$('#exampleFormControlInput5').val();
-//     let specializedCountry=$('#exampleFormControlInput6').val();
-//     let availableDay=$('#exampleFormControlInput7').val();
-//     let timeSlot=$('#exampleFormControlInput8').val();
-
-//     $.ajax({
-//         method:"POST",
-//         contentType:"application/json",
-//         url:"http://localhost:8086/consultant/save",
-//         async:true,
-//         data:JSON.stringify({
-//             "id":"",
-//             "consultantName":consultantName,
-//             "email":email,
-//             "password":password,
-//             "consultantNumber":consultantNumber,
-//             "specializedCountry":specializedCountry,
-//             "availableDay":availableDay,
-//             "timeSlot":timeSlot
-
-//         }),
-//         success: function (data) {
-//             alert("saved")
-//         },
-//         error: function (xhr, exception) {
-//             alert("Error")
-//         }
-//     })
-
-// }
 function saveConsultant() {
     let consultantName = $('#exampleFormControlInput2').val();
     let email = $('#exampleFormControlInput3').val();
@@ -145,44 +74,7 @@ function viewConsultant(){
             }
         })
     }
-
-// function updateConsultant(){
-//         let id=$('#exampleFormControlInput1').val();
-//         let consultantName=$('#exampleFormControlInput2').val();
-//         let email=$('#exampleFormControlInput3').val();
-//         let password=$('#exampleFormControlInput4').val();
-//         let consultantNumber=$('#exampleFormControlInput5').val();
-//         let specializedCountry=$('#exampleFormControlInput6').val();
-//         let availableDay=$('#exampleFormControlInput7').val();
-//         let timeSlot=$('#exampleFormControlInput8').val();
-
-//         $.ajax({
-//             method:"PUT",
-//             contentType:"application/json",
-//             url:"http://localhost:8086/consultant/update",
-//             async:true,
-//             data:JSON.stringify({
-//                 "id":id,
-//                 "consultantName":consultantName,
-//                 "email":email,
-//                 "password":password,
-//                 "consultantNumber":consultantNumber,
-//                 "specializedCountry":specializedCountry,
-//                 "availableDay":availableDay,
-//                 "timeSlot":timeSlot
-
-//             }),
-//             success: function (data) {
-//                 alert("Updated")
-//                     viewConsultant()
-//             },
-//             error: function (xhr, exception) {
-//                 alert("Error")
-//             }
-//         })
-
-//     }
-
+    
 function updateConsultant() {
     let id = $('#exampleFormControlInput1').val();
     let consultantName = $('#exampleFormControlInput2').val();

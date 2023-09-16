@@ -41,11 +41,11 @@
                 "contactNumber":contactNumber,
                 "consultantName":consultantName,
                 "email":email,
-                "date":date
+                "date":date,
 
             }),
             success: function (data) {
-                alert(" Consultant saved")
+                alert(" Appointment saved")
             },
             error: function (xhr, exception) {
                 alert("Error")
@@ -54,34 +54,61 @@
         }
     }
 
+    function viewAppointments() {
+        const lastName = sessionStorage.getItem("email");
+        $.ajax({
+            method: "POST",
+            url: "http://localhost:8086/appointment/user-email/"+ lastName,
+            async: true,
+            success: function (data) {
+                populateTable(data);
+            },
+            error: function (xhr, exception) {
+                alert("Error");
+            },
+        });
+      }
+      
+      
+      function populateTable(data) {
+        var tableBody = $("#appointmentTable");
+        // Clear the existing table body
+        tableBody.empty();
+        // Loop through the data and append rows to the table
+        $.each(data, function (index, element) {
+            var row = $("<tr>");
+            row.append($("<td>").text(element.id));
+            row.append($("<td>").text(element.firstName));
+            row.append($("<td>").text(element.lastName));
+            row.append($("<td>").text(element.contactNumber));
+            row.append($("<td>").text(element.consultantName));
+            row.append($("<td>").text(element.email));
+            row.append($("<td>").text(element.date));
+            tableBody.append(row);
 
+            $("#appointmentTable").on("click", "tr", function() {
+                // Get details from the clicked row
+                var id = $(this).find("td:eq(0)").text();
+                var firstName = $(this).find("td:eq(1)").text();
+                var lastName = $(this).find("td:eq(2)").text();
+                var contactNumber = $(this).find("td:eq(3)").text();
+                var consultantName = $(this).find("td:eq(4)").text();
+                var email = $(this).find("td:eq(5)").text();
+                var date = $(this).find("td:eq(6)").text();
+            
+                // Populate the form fields with the data
+                $('#exampleFormControlInput1').val(id);
+                $('#exampleFormControlInput2').val(firstName);
+                $('#exampleFormControlInput3').val(lastName);
+                $('#exampleFormControlInput4').val(contactNumber);
+                $('#exampleFormControlInput5').val(consultantName);
+                $('#exampleFormControlInput7').val(email);
+                $('#exampleFormControlInput6').val(date);
+            });
 
-
-    function viewAppointments(){
-    $.ajax({
-    method:"GET",
-    url:"http://localhost:8086/appointment/view-all",
-    async:true,
-    success: function (data) {
-        $('#appointmentTable').empty();
-        for (let appointment of data.content){
-            let id=appointment.id
-            let firstName=appointment.firstName
-            let lastName=appointment.lastName
-            let contactNumber=appointment.contactNumber
-            let consultantName=appointment.consultantName
-            let email=appointment.email
-            let date=appointment.date
-
-            var row=`<tr onclick="getDetails(this)"><td >${id}</td><td >${firstName}</td><td>${lastName}</td><td>${contactNumber}</td><td>${consultantName}</td><td >${email}</td><<td>${date}</td></tr>`;
-            $('#appointmentTable').append(row);
-        }
-    },
-    error: function (xhr, exception) {
-        alert("Error")
-    }
-    })
-    }
+            
+        });
+      }
 
 
     function updateAppointments() {
@@ -101,7 +128,7 @@
             contactNumber.trim() === "" ||
             consultantName.trim() === "" ||
             email.trim() === "" ||
-            date.trim() === ""
+            date.trim() === "" 
         ) {
             alert("Please fill in all required fields.");
         } else {
@@ -120,7 +147,7 @@
                     "date": date
                 }),
                 success: function (data) {
-                    alert("User Registerd");
+                    alert("Appointment Updated");
                     viewAppointments();
                 },
                 error: function (xhr, exception) {
@@ -148,58 +175,32 @@
 
     }
 
-    function getDetails(row){
+    // function getDetails(row){
 
-        var id = row.cells[0].innerHTML;
-        var firstName = row.cells[1].innerHTML;
-        var lastName = row.cells[2].innerHTML;
-        var contactNumber = row.cells[3].innerHTML;
-        var consultantName = row.cells[4].innerHTML;
-        var email = row.cells[5].innerHTML;
-        var date = row.cells[6].innerHTML;
+    //     var id = row.cells[0].innerHTML;
+    //     var firstName = row.cells[1].innerHTML;
+    //     var lastName = row.cells[2].innerHTML;
+    //     var contactNumber = row.cells[3].innerHTML;
+    //     var consultantName = row.cells[4].innerHTML;
+    //     var email = row.cells[5].innerHTML;
+    //     var date = row.cells[6].innerHTML;
 
-        $('#exampleFormControlInput1').val(id);
-        $('#exampleFormControlInput2').val(firstName);
-        $('#exampleFormControlInput3').val(lastName);
-        $('#exampleFormControlInput4').val(contactNumber);
-        $('#exampleFormControlInput5').val(consultantName);
-        $('#exampleFormControlInput7').val(email);
-        $('#exampleFormControlInput6').val(date);
 
-    }
+    //     $('#exampleFormControlInput1').val(id);
+    //     $('#exampleFormControlInput2').val(firstName);
+    //     $('#exampleFormControlInput3').val(lastName);
+    //     $('#exampleFormControlInput4').val(contactNumber);
+    //     $('#exampleFormControlInput5').val(consultantName);
+    //     $('#exampleFormControlInput7').val(email);
+    //     $('#exampleFormControlInput6').val(date);
 
-//     // Add this code at the beginning of your JavaScript file to populate the consultant names select box on page load.
-// $(document).ready(function () {
-//     populateConsultantNames();
-// });
+    // }
 
-// // Function to populate the consultant names select box
-// function populateConsultantNames() {
-//     $.ajax({
-//         method: "GET",
-//         url: "http://localhost:8086/consultant/consultant-names",
-//         async: true,
-//         success: function (data) {
-//             if (data.status === 200) {
-//                 const consultantNames = data.data;
-//                 const selectBox = document.getElementById("exampleFormControlInput5");
+    // ... Your existing code ...
 
-//                 // Clear existing options
-//                 selectBox.innerHTML = '<option value="">Select Consultant</option>';
+// Add an event listener to each row in the table
 
-//                 // Add consultant names as options
-//                 for (const name of consultantNames) {
-//                     const option = document.createElement("option");
-//                     option.value = name;
-//                     option.text = name;
-//                     selectBox.appendChild(option);
-//                 }
-//             } else {
-//                 console.error('Failed to fetch consultant names');
-//             }
-//         },
-//         error: function (xhr, textStatus, errorThrown) {
-//             console.error('Failed to fetch consultant names', errorThrown);
-//         }
-//     });
-// }
+
+// ... Your existing code ...
+
+
